@@ -10,41 +10,43 @@ import org.bukkit.entity.Player;
 public class GMCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+
+        Player player = (Player) sender;
+
+        if (sender == null) {
             sender.sendMessage(ChatColor.RED + "Das kann nur ein Spieler ausführen!");
             return false;
         }
 
-        Player player = (Player) sender;
-        if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("1")) {
-                player.setGameMode(GameMode.CREATIVE);
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Kreativ aktuallisiert.");
-            } else if (args[0].equalsIgnoreCase("2")) {
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Abenteuer aktuallisiert.");
-                player.setGameMode(GameMode.ADVENTURE);
-            } else if (args[0].equalsIgnoreCase("3")) {
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Zuschauer aktuallisiert.");
-                player.setGameMode(GameMode.SPECTATOR);
-            } else if (args[0].equalsIgnoreCase("0")) {
-                player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Überleben aktuallisiert.");
-            } else if (args[0].equalsIgnoreCase("survival")) {
-                player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Überleben aktuallisiert.");
-            } else if (args[0].equalsIgnoreCase("creative")) {
-                player.setGameMode(GameMode.CREATIVE);
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Kreativ aktuallisiert.");
-            } else if (args[0].equalsIgnoreCase("spectator")) {
-                player.setGameMode(GameMode.SPECTATOR);
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Zuschauer aktuallisiert.");
-            } else if (args[0].equalsIgnoreCase("adventure")) {
-                player.setGameMode(GameMode.ADVENTURE);
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Überleben aktuallisiert.");
-            } else {
-                sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.RED + " Usage: /gm <1, 2, 3, 0>");
+        if (args.length >= 1) {
+            switch (args[0].toUpperCase()) {
+                case "1":
+                    player.setGameMode(GameMode.CREATIVE);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Kreativ aktuallisiert.");
+                case "2":
+                    player.setGameMode(GameMode.ADVENTURE);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Abenteuer aktuallisiert.");
+                case "3":
+                    player.setGameMode(GameMode.SPECTATOR);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Zuschauer aktuallisiert.");
+                case "0":
+                    player.setGameMode(GameMode.SURVIVAL);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Überleben aktuallisiert.");
+                case "creative":
+                    player.setGameMode(GameMode.CREATIVE);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Kreativ aktuallisiert.");
+                case "survival":
+                    player.setGameMode(GameMode.SURVIVAL);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Überleben aktuallisiert.");
+                case "adventure":
+                    player.setGameMode(GameMode.ADVENTURE);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Abenteuer aktuallisiert.");
+                case "spectator":
+                    player.setGameMode(GameMode.SPECTATOR);
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Dein Spielmodus wurde auf Zuschauer aktuallisiert.");
+                default:
+                    sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.RED + " Usage: /gm <1, 2, 3, 0>");
             }
-
         } else {
             sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Craftattack" + ChatColor.DARK_GRAY + "]" + ChatColor.RED + " Usage: /gm <1, 2, 3, 0>");
         }
