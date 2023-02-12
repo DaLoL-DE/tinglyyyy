@@ -13,7 +13,7 @@ public class GMCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (sender instanceof Player) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "Das kann nur ein Spieler ausführen!");
             return false;
         }
