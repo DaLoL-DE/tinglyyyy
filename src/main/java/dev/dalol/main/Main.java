@@ -11,7 +11,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Main-Core gestartet.");
+        getLogger().info("Plugin gestartet.");
         getCommand("test").setExecutor(new TestCommand());
         getCommand("gm").setExecutor(new GMCommand());
 
@@ -23,6 +23,6 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("Main-Core entladen.");
+        getLogger().info("Plugin entladen.");
     }
 }
