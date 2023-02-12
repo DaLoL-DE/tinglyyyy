@@ -1,0 +1,9 @@
+name: MainCore
+version: '1.0-SNAPSHOT'
+main: dev.dalol.main.Main
+api-version: 1.19
+commands:
+  test:
+  gm:
+    aliases: [ "gamemode" ]
+    permission: admin.gamemode

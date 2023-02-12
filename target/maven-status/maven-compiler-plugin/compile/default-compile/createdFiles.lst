@@ -1,0 +1,4 @@
+dev\dalol\main\commands\GMCommand.class
+dev\dalol\main\Main.class
+dev\dalol\main\listener\JoinQuitListener.class
+dev\dalol\main\commands\TestCommand.class
