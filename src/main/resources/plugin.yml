@@ -1,4 +1,4 @@
-name: MainCore
+name: Main
 version: '${project.version}'
 main: dev.dalol.main.Main
 api-version: 1.19
